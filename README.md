@@ -1,9 +1,11 @@
 <h3>Linkit</h3>
 
-https://ilari2024.github.io/shakki/  
-https://ilari2024.github.io/windows   
-https://ilari2024.github.io/joululaskuri  
-[tulee paian]
+ <a href="https://ilari2024.github.io/shakki">shakki</a>
+ <br>
+   <a href="https://ilari2024.github.io/windows">windows error</a>
+   <br>
+ <a href="https://ilari2024.github.io/joululaskuri">joululaskuri</a>
+
 
 
 
