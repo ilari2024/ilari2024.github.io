@@ -1,4 +1,4 @@
-**Linkit**
+<h1>Linkit</h1>
 
 https://ilari2024.github.io/shakki/  
 https://ilari2024.github.io/windows   
