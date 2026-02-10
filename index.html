@@ -29,6 +29,17 @@
         .card-hover:hover {
             transform: translateY(-5px);
             transition: all 0.3s ease;
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.1);
+        }
+        
+        /* Smooth fade-in for page load */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -38,29 +49,45 @@
     <nav class="fixed w-full z-50 glass-card">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold gradient-text">ilari2024</a>
-            <div class="space-x-8 hidden md:flex font-medium">
-                <a href="#koti" class="hover:text-blue-600 transition">Koti</a>
-                <a href="#projektit" class="hover:text-blue-600 transition">Projektit</a>
-                <a href="#yhteys" class="hover:text-blue-600 transition">Yhteys</a>
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="space-x-8 hidden md:flex font-medium">
+                    <a href="#koti" class="hover:text-blue-600 transition">Koti</a>
+                    <a href="#projektit" class="hover:text-blue-600 transition">Projektit</a>
+                    <a href="#yhteys" class="hover:text-blue-600 transition">Yhteys</a>
+                </div>
+                <!-- Kirjautumistila -->
+                <div id="userStatus" class="flex items-center">
+                    <a href="tili/kirjaudusisään.html" id="loginLink" class="bg-blue-600 text-white px-5 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 transition shadow-md">Kirjaudu</a>
+                    <div id="userInfo" class="hidden items-center space-x-3 bg-white/50 px-3 py-1.5 rounded-full border border-slate-200 shadow-sm">
+                        <i class="fas fa-user-circle text-blue-500"></i>
+                        <span id="userEmail" class="text-xs font-semibold text-slate-700 max-w-[150px] truncate hidden sm:inline"></span>
+                        <button id="logoutBtn" class="text-slate-400 hover:text-red-500 transition text-sm p-1" title="Kirjaudu ulos">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero-osio -->
-    <section id="koti" class="min-h-screen flex items-center justify-center pt-20">
+    <section id="koti" class="min-h-screen flex items-center justify-center pt-20 fade-in">
         <div class="max-w-4xl px-4 text-center">
+            <div class="mb-6 inline-block bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-sm font-bold border border-blue-100">
+                🚀 Portfolio 2024
+            </div>
             <h1 class="text-5xl md:text-7xl font-extrabold mb-6">
                 Tervetuloa <span class="gradient-text">GitHub-sivulleni</span>
             </h1>
-            <p class="text-xl text-slate-600 mb-8 leading-relaxed">
-                Olen nuori kehittäjä ja harrastaja. Täältä löydät tekemiäni pelejä ja hauskoja koodiprojekteja.
+            <p class="text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto">
+                Olen nuori kehittäjä ja harrastaja. Täältä löydät tekemiäni pelejä, kuten upean shakkipelin, sekä muita hauskoja koodiprojekteja.
             </p>
-            <div class="flex justify-center gap-4">
-                <a href="#projektit" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#projektit" class="bg-blue-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-200 active:scale-95">
                     Tutustu projekteihin
                 </a>
-                <a href="https://github.com/ilari2024" target="_blank" class="bg-white border border-slate-200 px-8 py-3 rounded-full font-semibold hover:bg-slate-50 transition">
-                    GitHub-profiili
+                <a href="https://github.com/ilari2024" target="_blank" class="bg-white border border-slate-200 px-8 py-3.5 rounded-full font-semibold hover:bg-slate-50 transition active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fab fa-github"></i> GitHub-profiili
                 </a>
             </div>
         </div>
@@ -69,41 +96,54 @@
     <!-- Projektit -->
     <section id="projektit" class="py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center">Omat Projektit</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Omat Projektit</h2>
+                <p class="text-slate-500">Kaikki pelit on tehty intohimolla ja koodaamisen ilolla.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 
                 <!-- Shakkipeli -->
-                <div class="border border-slate-100 rounded-2xl overflow-hidden shadow-sm card-hover group bg-white">
-                    <div class="h-48 bg-blue-100 flex items-center justify-center">
-                        <i class="fas fa-chess text-5xl text-blue-500 group-hover:scale-110 transition"></i>
+                <div class="border border-slate-100 rounded-3xl overflow-hidden shadow-sm card-hover group bg-slate-50/50">
+                    <div class="h-56 bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center relative overflow-hidden">
+                        <i class="fas fa-chess text-7xl text-amber-700 group-hover:scale-110 transition duration-500 z-10"></i>
+                        <div class="absolute -bottom-4 -right-4 text-amber-200/50 text-9xl font-bold opacity-20">♔</div>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3">Shakkipeli</h3>
-                        <p class="text-slate-600 mb-6">Klassinen shakkipeli toteutettuna selaimessa. Haasta itsesi tai kaverisi!</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-blue-50 text-blue-600 text-sm rounded-md font-medium">Peli</span>
-                            <span class="px-3 py-1 bg-yellow-50 text-yellow-600 text-sm rounded-md font-medium">JavaScript</span>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold">Shakkipeli</h3>
+                            <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded font-bold uppercase tracking-wider">Pelattavissa</span>
                         </div>
-                        <a href="https://ilari2024.github.io/shakki/" class="inline-flex items-center text-blue-600 font-bold hover:underline">
-                            Pelaa tästä <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        <p class="text-slate-600 mb-6 min-h-[4.5rem]">Klassinen shakkipeli moninpelinä tai tietokonetta vastaan. Sisältää vaikeustasot helposta experttiin ja hienon kokonäyttötilan!</p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-sm rounded-lg font-medium">HTML5</span>
+                            <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-sm rounded-lg font-medium">CSS Grid</span>
+                            <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-sm rounded-lg font-medium">JS Logic</span>
+                        </div>
+                        <a href="shakki/index.html" class="inline-flex items-center justify-center w-full bg-slate-900 text-white py-3 rounded-xl font-bold hover:bg-blue-600 transition group-hover:shadow-md">
+                            Pelaa tästä <i class="fas fa-play-circle ml-2"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Windows Error -->
-                <div class="border border-slate-100 rounded-2xl overflow-hidden shadow-sm card-hover group bg-white">
-                    <div class="h-48 bg-red-100 flex items-center justify-center">
-                        <i class="fab fa-windows text-5xl text-red-500 group-hover:scale-110 transition"></i>
+                <div class="border border-slate-100 rounded-3xl overflow-hidden shadow-sm card-hover group bg-slate-50/50">
+                    <div class="h-56 bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center relative overflow-hidden">
+                        <i class="fab fa-windows text-7xl text-red-500 group-hover:scale-110 transition duration-500 z-10"></i>
+                        <div class="absolute -bottom-4 -right-4 text-red-200/50 text-9xl font-bold opacity-20">!</div>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3">Windows Error -huumoria</h3>
-                        <p class="text-slate-600 mb-6">Hauskoja juttuja ja kokeiluja Windowsin virheilmoituksiin liittyen.</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-red-50 text-red-600 text-sm rounded-md font-medium">Huumori</span>
-                            <span class="px-3 py-1 bg-gray-50 text-gray-600 text-sm rounded-md font-medium">Web</span>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold">Windows Error</h3>
+                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold uppercase tracking-wider">Huumori</span>
                         </div>
-                        <a href="https://ilari2024.github.io/windows" class="inline-flex items-center text-red-600 font-bold hover:underline">
-                            Katso sivu <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        <p class="text-slate-600 mb-6 min-h-[4.5rem]">Hauskoja juttuja ja kokeiluja Windowsin virheilmoituksiin liittyen. Nostalginen ja hauska käyttöliittymäkokeilu.</p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-sm rounded-lg font-medium">UI Design</span>
+                            <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-sm rounded-lg font-medium">Interaktiivinen</span>
+                        </div>
+                        <a href="windows/index.html" class="inline-flex items-center justify-center w-full bg-slate-900 text-white py-3 rounded-xl font-bold hover:bg-red-500 transition group-hover:shadow-md">
+                            Katso sivu <i class="fas fa-external-link-alt ml-2"></i>
                         </a>
                     </div>
                 </div>
@@ -113,27 +153,74 @@
     </section>
 
     <!-- Yhteys -->
-    <section id="yhteys" class="py-24 bg-slate-50">
+    <section id="yhteys" class="py-24 bg-slate-50 border-t border-slate-200">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-6">Ota yhteyttä</h2>
-            <p class="text-slate-600 mb-8 leading-relaxed text-lg">
+            <p class="text-slate-600 mb-10 leading-relaxed text-lg">
                 Haluatko antaa palautetta peleistä tai onko sinulla uusia ideoita? <br>
-                Laita rohkeasti viestiä!
+                Laita rohkeasti viestiä – vastailen mielelläni!
             </p>
             <div class="flex flex-col items-center gap-6">
-                <a href="mailto:ilari2024@hotmail.com" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition flex items-center gap-3 shadow-lg shadow-blue-200">
-                    <i class="fas fa-envelope"></i> ilari2024@hotmail.com
+                <a href="mailto:ilari2024@hotmail.com" class="bg-white border-2 border-slate-200 text-slate-800 px-8 py-4 rounded-2xl font-bold hover:border-blue-500 hover:text-blue-600 transition flex items-center gap-4 shadow-sm active:scale-95">
+                    <div class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-600">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    ilari2024@hotmail.com
                 </a>
-                <div class="flex gap-6 text-3xl">
-                    <a href="https://github.com/ilari2024" target="_blank" class="text-slate-400 hover:text-slate-900 transition"><i class="fab fa-github"></i></a>
-                </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-slate-200 text-center text-slate-400 text-sm">
+    <footer class="py-12 border-t border-slate-200 text-center text-slate-400 text-sm bg-white">
+        <div class="mb-4 space-x-4">
+            <a href="#" class="hover:text-blue-500 transition">Twitter</a>
+            <a href="https://github.com/ilari2024" class="hover:text-blue-500 transition">GitHub</a>
+        </div>
         <p>&copy; 2024 ilari2024. Kaikki oikeudet pidätetään.</p>
     </footer>
+
+    <script type="module">
+        const firebaseConfig = {
+            apiKey: "AIzaSyBx0qtCamr84BuLu0scEWAJKjIok6N2dko",
+            authDomain: "kirjatuminen.firebaseapp.com",
+            databaseURL: "https://kirjatuminen-default-rtdb.firebaseio.com",
+            projectId: "kirjatuminen",
+            storageBucket: "kirjatuminen.firebasestorage.app",
+            messagingSenderId: "967445541491",
+            appId: "1:967445541491:web:dc06c7c912d492d0517006",
+            measurementId: "G-5585RWDD2S"
+        };
+
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
+        import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const loginLink = document.getElementById('loginLink');
+        const userInfo = document.getElementById('userInfo');
+        const userEmail = document.getElementById('userEmail');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loginLink.classList.add('hidden');
+                userInfo.classList.remove('hidden');
+                userInfo.classList.add('flex');
+                userEmail.textContent = user.email;
+            } else {
+                loginLink.classList.remove('hidden');
+                userInfo.classList.add('hidden');
+            }
+        });
+
+        logoutBtn.addEventListener('click', async () => {
+            if(confirm("Haluatko varmasti kirjautua ulos?")) {
+                await signOut(auth);
+                window.location.reload();
+            }
+        });
+    </script>
 
 </body>
 </html>
